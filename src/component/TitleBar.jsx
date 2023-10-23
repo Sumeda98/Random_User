@@ -4,9 +4,9 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
-import Brightness4Icon from "@mui/icons-material/Brightness4";
-import Brightness7Icon from "@mui/icons-material/Brightness7";
 import { Container } from "@mui/material";
+import WbSunnyRoundedIcon from '@mui/icons-material/WbSunnyRounded';
+import NightsStayIcon from '@mui/icons-material/NightsStay';
 
 export default function TitleBar({ toggleThemeMode, darkMode }) {
   return (
@@ -17,8 +17,8 @@ export default function TitleBar({ toggleThemeMode, darkMode }) {
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               Random Profile
             </Typography>
-            <IconButton color="inherit" onClick={toggleThemeMode}>
-              {darkMode ? <Brightness7Icon /> : <Brightness4Icon />}
+            <IconButton sx={{border:'1px solid'}} color="inherit" onClick={toggleThemeMode}>
+              {darkMode ? < NightsStayIcon/> : <WbSunnyRoundedIcon />}
             </IconButton>
           </Container>
         </Toolbar>
