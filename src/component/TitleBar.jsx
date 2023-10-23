@@ -14,7 +14,7 @@ export default function TitleBar({ toggleThemeMode, darkMode }) {
       <AppBar position="static">
         <Toolbar>
           <Container sx={{ display: "flex" }}>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            <Typography variant="h5" sx={{ flexGrow: 1 ,pt:'4px'}}>
               Random Profile
             </Typography>
             <IconButton sx={{border:'1px solid'}} color="inherit" onClick={toggleThemeMode}>
