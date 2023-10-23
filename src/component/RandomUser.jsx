@@ -1,4 +1,4 @@
-import { Card, Divider, Button, Container } from "@mui/material";
+import { Card, Divider, Button, Container, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import {
   cardStyle,
@@ -10,7 +10,7 @@ import {
 import axios from "axios";
 
 const RandomUser = () => {
-  const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState([]);
 
   const fetchRandomUser = () => {
     axios
@@ -26,12 +26,23 @@ const RandomUser = () => {
   };
 
   useEffect(() => {
-    fetchRandomUser(); // Fetch a random user when the component mounts
+    fetchRandomUser();
   }, []);
 
   const handleGenerateClick = () => {
-    fetchRandomUser(); // Fetch a new random user when the button is clicked
+    fetchRandomUser(); 
   };
+
+
+const userDOB = new Date(userData.dob?.date);
+
+const year = userDOB.getFullYear();
+const month = (userDOB.getMonth() + 1).toString().padStart(2, '0'); 
+const day = userDOB.getDate().toString().padStart(2, '0');
+
+const formattedDOB = `${year}-${month}-${day}`;
+// console.log(formattedDOB);
+
 
   return (
     <div>
@@ -46,14 +57,16 @@ const RandomUser = () => {
           <div style={{ textAlign: "center" }}>
             {userData ? (
               <div>
-                <h3 style={textColor}>
+                <Typography variant="h6">
                   {userData.name?.title +
                     ". " +
                     userData.name?.first +
                     " " +
                     userData.name?.last}
-                </h3>
-                <h4 style={textColor}>{userData?.email}</h4>
+                </Typography>
+                <Typography variant="subtitle1">{userData?.email}</Typography>
+                <Typography variant="subtitle1">{formattedDOB}</Typography>
+                <Typography variant="subtitle1">{userData.location?.street.number + ', ' + userData.location?.street.name}</Typography>
               </div>
             ) : (
               <p>Loading...</p>

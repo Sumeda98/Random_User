@@ -17,7 +17,7 @@ export const imgContainer = {
   }
 
   export const cardStyle = {
-    width: "50%",
+    width: {xs:'80%',sm:'70%',md:'60%'},
     p: 4 , 
     borderRadius:4,
     

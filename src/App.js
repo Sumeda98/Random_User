@@ -2,7 +2,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import TitleBar from './component/TitleBar';
 import Home from './container/Home';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Box } from '@mui/material';
 
 export default function App() {
@@ -30,7 +30,7 @@ export default function App() {
       <CssBaseline />
       <TitleBar toggleThemeMode={toggleThemeMode} darkMode={darkMode} />
       <Box sx={{ mt: 5 }}>
-        <Home />
+        <Home/>
       </Box>
     </ThemeProvider>
   );
