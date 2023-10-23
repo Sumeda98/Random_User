@@ -1,11 +1,10 @@
-import { Card, Divider, Button, Container, Typography } from "@mui/material";
+import { Card, Divider, Button, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import {
   cardStyle,
   flexCenterStyle,
   imgContainer,
   imgUser,
-  textColor,
 } from "../assets/Style";
 import axios from "axios";
 
@@ -14,7 +13,7 @@ const RandomUser = () => {
 
   const fetchRandomUser = () => {
     axios
-      .get("https://randomuser.me/api/")
+      .get("https://randomuser.me/api/?nat=gb,us,au")
       .then((response) => {
         const user = response.data.results[0];
         setUserData(user);
@@ -30,19 +29,17 @@ const RandomUser = () => {
   }, []);
 
   const handleGenerateClick = () => {
-    fetchRandomUser(); 
+    fetchRandomUser();
   };
 
+  const userDOB = new Date(userData.dob?.date);
 
-const userDOB = new Date(userData.dob?.date);
+  const year = userDOB.getFullYear();
+  const month = (userDOB.getMonth() + 1).toString().padStart(2, "0");
+  const day = userDOB.getDate().toString().padStart(2, "0");
 
-const year = userDOB.getFullYear();
-const month = (userDOB.getMonth() + 1).toString().padStart(2, '0'); 
-const day = userDOB.getDate().toString().padStart(2, '0');
-
-const formattedDOB = `${year}-${month}-${day}`;
-// console.log(formattedDOB);
-
+  const formattedDOB = `${year}-${month}-${day}`;
+  // console.log(formattedDOB);
 
   return (
     <div>
@@ -66,7 +63,18 @@ const formattedDOB = `${year}-${month}-${day}`;
                 </Typography>
                 <Typography variant="subtitle1">{userData?.email}</Typography>
                 <Typography variant="subtitle1">{formattedDOB}</Typography>
-                <Typography variant="subtitle1">{userData.location?.street.number + ', ' + userData.location?.street.name}</Typography>
+                <Typography variant="subtitle1">{userData?.phone}</Typography>
+                <Typography variant="subtitle1">
+                  {userData.location?.street.number +
+                    ", " +
+                    userData.location?.street.name +
+                    ", " +
+                    userData.location?.city +
+                    ", " +
+                    userData.location?.state +
+                    ", " +
+                    userData.location?.country}
+                </Typography>
               </div>
             ) : (
               <p>Loading...</p>

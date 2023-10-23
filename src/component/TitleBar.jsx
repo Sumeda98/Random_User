@@ -15,7 +15,7 @@ export default function TitleBar({ toggleThemeMode, darkMode }) {
         <Toolbar>
           <Container sx={{ display: "flex" }}>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              Random User
+              Random Profile
             </Typography>
             <IconButton color="inherit" onClick={toggleThemeMode}>
               {darkMode ? <Brightness7Icon /> : <Brightness4Icon />}
