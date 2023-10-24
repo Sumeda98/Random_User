@@ -11,7 +11,7 @@ import axios from "axios";
 const RandomUser = () => {
   const [userData, setUserData] = useState([]);
 
-  const fetchRandomUser = () => {
+  const fetchRandomUser = (DarkMode) => {
     axios
       .get("https://randomuser.me/api/?nat=gb,us,au")
       .then((response) => {
@@ -44,7 +44,7 @@ const RandomUser = () => {
   return (
     <div>
       <div style={flexCenterStyle}>
-        <Card sx={cardStyle}>
+        <Card  sx={cardStyle}>
           <div style={flexCenterStyle}>
             <div style={imgContainer}>
               <img style={imgUser} src={userData?.picture?.large} alt="Image" />

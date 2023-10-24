@@ -18,6 +18,15 @@ export default function App() {
   const theme = createTheme({
     palette: {
       mode: darkMode ? 'dark' : 'light',
+      background: {
+        default: darkMode? '#121212':'#ede7f6',
+      },
+      primary: {
+        main: '#7c4dff',
+      },
+      secondary: {
+        main: '#536dfe',
+      },
     },
     
     typography: {
@@ -29,8 +38,8 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <TitleBar toggleThemeMode={toggleThemeMode} darkMode={darkMode} />
-      <Box sx={{ mt: 5 }}>
-        <Home/>
+      <Box sx={{ mt: 5,}}>
+        <Home darkMode={darkMode}/>
       </Box>
     </ThemeProvider>
   );

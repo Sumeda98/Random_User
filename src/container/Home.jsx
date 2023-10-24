@@ -5,7 +5,7 @@ function Home() {
 
   return (
     <div>
-      <RandomUser/>
+      <RandomUser />
     </div>
   );
 }
